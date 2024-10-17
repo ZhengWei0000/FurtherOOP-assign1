@@ -21,7 +21,7 @@ public class HelloGsonRecord {
 
     public static QMPerson fromJsonString(String json) {
         // todo: return a QMPerson object from the json string
-        return gson.fromJson(json, QMPerson.class);
+        return null;
     }
 
 
@@ -35,7 +35,7 @@ public class HelloGsonRecord {
         // print the JSON string
         System.out.println(json);
         // convert the JSON string back to a record instance
-        QMPerson personCopy = gson.fromJson(json, QMPerson.class);
+        QMPerson personCopy = fromJsonString(json);
         System.out.println(personCopy);
     }
 }
