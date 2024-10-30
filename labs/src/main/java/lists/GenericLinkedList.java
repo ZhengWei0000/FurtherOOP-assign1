@@ -17,38 +17,20 @@ class GenericNode<T> {
 
 public class GenericLinkedList<T> implements GenericList<T> {
     GenericNode<T> head;
-    private GenericNode<T> tail;
     int len;
 
     public GenericLinkedList() {
         head = null;
-        tail = null;
         len = 0;
     }
 
     public boolean contains(T value) {
         // todo: implement this properly
-        GenericNode<T> current = head;
-        while (current != null) {
-            if (current.value.equals(value)) {
-                return true;
-            }
-            current = current.next;
-        }
         return false;
     }
 
     public void append(T value) {
         // todo: implement an efficient append method
-        GenericNode<T> newNode = new GenericNode<>(value);
-        if (tail == null) {  // 链表为空时
-            head = newNode;
-            tail = newNode;
-        } else {  // 链表不为空时
-            tail.next = newNode;
-            tail = newNode;
-        }
-        len++;
     }
 
     public int length() {

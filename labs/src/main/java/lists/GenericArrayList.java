@@ -19,22 +19,12 @@ class GenericArrayList<T> implements GenericList<T> {
     }
 
     public void append(T value) {
-        //T[] newValues = (T[]) new Object[len + 1];
-        //for (int i = 0; i < len; i++) {
-            //newValues[i] = values[i];
-        //}
-       // newValues[len] = value;
-       // values = newValues;
-       // len++;
-        if (len == values.length) {
-            // 扩容，将数组容量翻倍
-            T[] newValues = (T[]) new Object[values.length * 2];
-            for (int i = 0; i < len; i++) {
-                newValues[i] = values[i];
-            }
-            values = newValues;
+        T[] newValues = (T[]) new Object[len + 1];
+        for (int i = 0; i < len; i++) {
+            newValues[i] = values[i];
         }
-        values[len] = value;
+        newValues[len] = value;
+        values = newValues;
         len++;
     }
 
