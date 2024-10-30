@@ -33,7 +33,13 @@ public class GenericLinkedListRecord<T> implements GenericList<T> {
 
     private GenericNodeRecord<T> appendRecord(GenericNodeRecord<T> node, T value) {
         // todo: implement this properly!
-        return new GenericNodeRecord<T>(value, null);
+        if (node == null) {
+
+            return new GenericNodeRecord<>(value, null);
+        } else {
+
+            return new GenericNodeRecord<>(node.value(), appendRecord(node.next(), value));
+        }
     }
 
     private GenericNodeRecord<T> prependRecord(GenericNodeRecord<T> node, T value) {
