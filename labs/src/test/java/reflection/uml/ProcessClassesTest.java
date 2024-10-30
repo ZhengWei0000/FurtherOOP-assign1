@@ -145,4 +145,21 @@ public class ProcessClassesTest {
         assertEquals(5, diagramData.classes().size(), "Expected 3 classes in DiagramData.");
         assertEquals(3, diagramData.links().size(), "Expected 3 links in DiagramData (2 superclasses and 1 dependency).");
     }
+    @Test
+    public void testMethodSignatureDependencies() {
+        ProcessClasses processor = new ProcessClasses();
+        List<Class<?>> classList = Arrays.asList(TestDependencyClass.class);
+
+        // Define a test class with a method signature dependency
+        class TestWithMethodSignatureDependency {
+            public void methodWithParameterDependency(TestDependencyClass dependency) {
+            }
+        }
+
+        List<Link> dependencies = processor.getMethodDependencies(TestWithMethodSignatureDependency.class, classList);
+
+        assertEquals(1, dependencies.size(), "Expected TestWithMethodSignatureDependency to have 1 parameter dependency.");
+        assertEquals(new Link("TestWithMethodSignatureDependency", "TestDependencyClass", LinkType.DEPENDENCY), dependencies.get(0));
+    }
+
 }

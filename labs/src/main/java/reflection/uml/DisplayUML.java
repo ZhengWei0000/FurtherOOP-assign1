@@ -58,6 +58,7 @@ public class DisplayUML extends JPanel {
         }
     }
 
+
     // Main method to set up a simple frame and display the panel
     public static void main(String[] args) {
         // Mock-up example layout to display
